@@ -1,0 +1,52 @@
+postgres_roqua:
+  image: postgres:10
+  ports:
+   - "127.0.0.1:5432:5432"
+  environment:
+    POSTGRES_USER: $USER
+    TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+postgres_heroku:
+  image: postgres:9.6.8-alpine
+  ports:
+   - "127.0.0.1:5433:5432"
+  environment:
+    POSTGRES_USER: $USER
+    TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+redis:
+  image: redis
+  ports:
+  - "127.0.0.1:6379:6379"
+  command: redis-server --requirepass redispassword
+  environment:
+    TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+mongo:
+  image: mongo
+  ports:
+  - "127.0.0.1:27017:27017"
+  environment:
+    TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+mysql:
+  image: mysql:5.7.8
+  ports:
+  - "127.0.0.1:3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
+    TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+mysql-new:
+  image: mysql:8.0.1
+  ports:
+  - "127.0.0.1:3307:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
+    TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+autovar:
+  image: roqua/autovar:staging
+  ports:
+    - "127.0.0.1:81:80"
+  environment:
+    TZ: "/usr/share/zoneinfo/Europe/Amsterdam"
+
